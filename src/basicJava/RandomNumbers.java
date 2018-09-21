@@ -1,4 +1,4 @@
-package Homework;
+package basicJava;
 import java.util.Scanner;
 
 public class RandomNumbers {

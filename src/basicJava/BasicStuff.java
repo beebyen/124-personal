@@ -10,26 +10,27 @@ public class BasicStuff {
         System.out.println(6 / 4);
         System.out.println((double)6 / 4);
         System.out.println(Integer.MIN_VALUE);
-        System.out.println(Integer.MIN_VALUE - 1); //I have no idea why this happened
+        System.out.println(Integer.MIN_VALUE - 1); //Very confused.
         System.out.println(Integer.MAX_VALUE);
-//
-//        public String calculate(int hours) {
-//            int days = hours / 24;
-//            hours = 24 % hours;
-//            int weeks = days / 7;
+        System.out.println(calculate(1600));
+        System.out.println(computeCone(2, 5));
+
+  }
+        private static String calculate(int hours) {
+            int original = hours;
+            int days = hours / 24;
+            hours = hours % 24;
+            int weeks = days / 7;
+            days = days % 7;
+            return original + " hours is " + weeks + " weeks, " + days + " days, and " + hours + " hours.";
+
             //return hours + " hours is" +
         }
-//    }
+
+        public static String computeCone(int r, int h) {
+            double volume = Math.PI * r * 2 * (h / 3);
+            double surfaceArea = Math.PI * r * 2 + Math.PI * r * Math.sqrt(r * 2 + h * 2);
+            return "The volume of this cone is " + volume + " units and the surfaceArea is " + surfaceArea + " units.";
+        }
+
 }
-
-//    Write code to compute the number of weeks, days, and hours in 1600 hours.
-//        Write code for a program that computes the surface area and volume of a solid cone given the radius of its base and height. The relevant equations are
-//        V = π r2 h / 3
-//        A = π r2 + π r √(r2+h2)
-//        [ Source: Wikipedia: Cone (geometry) ]
-
-//        The steps you will need to accomplish are below:
-// 1. declare double variables: h, r, V, and A.
-// 2. assign h and r the hard-coded values 5 and 2, respectively
-// 3. compute volume, V, and surface area, A
-// 4. display the results
