@@ -1,8 +1,10 @@
-package activityStarterCode.BasicClasses;
+package BasicClasses;
 
 import java.util.Random;
 
 public class RandomWalk {
+    public final static int MAX = 255;
+    public final static int MIN = 0;
     private Random rng;
     private int walkValue;
 
@@ -16,11 +18,10 @@ public class RandomWalk {
     }
 
     public int advanceValue() {
-        // TODO: update the value randomly, either +1 or -1
-        if(rng.nextBoolean()) {
+        if(rng.nextBoolean() && walkValue < MAX) {
             walkValue++;
         }
-        else {
+        if(!rng.nextBoolean() && walkValue > MIN) {
             walkValue--;
         }
         return getValue();

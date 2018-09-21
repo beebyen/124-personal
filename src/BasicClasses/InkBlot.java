@@ -1,4 +1,4 @@
-package activityStarterCode.BasicClasses;
+package BasicClasses;
 
 import comp124graphics.CanvasWindow;
 import comp124graphics.Line;
@@ -17,7 +17,6 @@ public class InkBlot {
      */
     public static void main(String[] args){
         InkBlot ib = new InkBlot();
-
         ib.generateInkBlot();
     }
 
@@ -36,16 +35,29 @@ public class InkBlot {
      * components (red, green, blue)
      */
     public void generateInkBlot() {
-        // TODO: fill in this method according to the activity instructions.
+        RandomWalk red = new RandomWalk(150);
+        RandomWalk blue = new RandomWalk(150);
+        RandomWalk green = new RandomWalk(150);
+        getColor(red, blue, green);
         RandomWalk x = new RandomWalk(150);
         RandomWalk y = new RandomWalk(150);
+
         for (int i = 0; i < 15000; i++) {
-            mirror(advance(x, y));
+            Line line1 = advance(x, y);
+            Line line2 = mirror(line1);
+            mirror(line1);
+
+            line1.setStrokeColor(getColor(red, blue, green));
+            line2.setStrokeColor(getColor(red, blue, green));
+            canvas.add(line1);
+            canvas.add(line2);
         }
 
     }
 
     /**
+     *
+     *
      * Turns three random walk objects into a Color.
      * If the random walks do not encode a valid color (the int value is bigger
      * than 255 or small than 0) it will return dark grey.
@@ -95,7 +107,8 @@ public class InkBlot {
      * @return a Line from the old to new position of the random walk.
      */
     private Line advance(RandomWalk xWalk, RandomWalk yWalk) {
-        int oldX = xWalk.getValue();
+        int oldX;
+        oldX = xWalk.getValue();
         int oldY = yWalk.getValue();
         int newX = xWalk.advanceValue();
         int newY = yWalk.advanceValue();
